@@ -14,9 +14,9 @@ services:
       # Persist OpenCode configuration and auth
       - opencode-config:/root/.opencode
       # Mount a workspace directory for projects
-      - ./workspace:/workspace
-      # To use a Docker volume instead of a bind mount, uncomment the line below and comment the line above:
-      # - opencode-workspace:/workspace
+      - opencode-workspace:/workspace
+      # To use a bind mount instead of a Docker volume, uncomment the line below and comment the line above:
+      # - ./workspace:/workspace
     environment:
       - HOST=0.0.0.0
       - CLI_PORT=9898
@@ -32,9 +32,9 @@ services:
       - "3000:3000"
     volumes:
       - opencode-config:/root/.opencode
-      - ./workspace:/workspace
-      # To use a Docker volume instead:
-      # - opencode-workspace:/workspace
+      - opencode-workspace:/workspace
+      # To use a bind mount instead:
+      # - ./workspace:/workspace
     working_dir: /workspace
 
   opencode-manager:
@@ -53,9 +53,9 @@ services:
       - PORT=5003
       - WORKSPACE_PATH=/workspace
     volumes:
-      - ./workspace:/workspace
-      # To use a Docker volume instead:
-      # - opencode-workspace:/workspace
+      - opencode-workspace:/workspace
+      # To use a bind mount instead:
+      # - ./workspace:/workspace
       - opencode-config:/home/node/.opencode
       - opencode-manager-data:/app/data
     restart: unless-stopped
@@ -63,4 +63,4 @@ services:
 volumes:
   opencode-config:
   opencode-manager-data:
-  # opencode-workspace:
+  opencode-workspace:
