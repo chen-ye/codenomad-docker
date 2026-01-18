@@ -28,7 +28,7 @@ services:
   opencode-web:
     image: ghcr.io/anomalyco/opencode:latest
     pull_policy: always
-    command: ["web", "--hostname", "0.0.0.0", "--port", "3000", "--mdns", "--unrestricted-root"]
+    command: ["web", "--hostname", "0.0.0.0", "--port", "3000", "--mdns", "--unrestricted-root", "/workspace"]
     ports:
       - "3000:3000"
     volumes:
@@ -37,7 +37,7 @@ services:
       - opencode-workspace:/workspace
       # To use a bind mount instead:
       # - ./workspace:/workspace
-    working_dir: /workspace
+    working_dir: /
 
   opencode-manager:
     image: ghcr.io/chen-ye/opencode-manager:latest
