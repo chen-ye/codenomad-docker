@@ -8,10 +8,22 @@ name: Publish CodeNomad Image
 on:
   push:
     branches: [ "main" ]
+    # Only build when Dockerfile or this workflow changes
+    paths:
+      - 'Dockerfile'
+      - '.github/workflows/publish-codenomad.yml'
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'Dockerfile'
+      - '.github/workflows/publish-codenomad.yml'
+  # Allow manual trigger
+  workflow_dispatch:
+  # Build weekly to pick up latest npm package updates
+  schedule:
+    - cron: '0 0 * * 0'
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -61,6 +73,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
+            type=schedule
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
