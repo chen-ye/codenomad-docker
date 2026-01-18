@@ -1,4 +1,4 @@
-name: OpenCode Manager Docker
+name: Publish OpenCode Manager Image
 
 on:
   push:
