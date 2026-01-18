@@ -1,16 +1,18 @@
-FROM node:lts-alpine
+FROM node:20-slim
 
 # Install system dependencies
-# build-base: equivalent to build-essential for compiling native modules
-# gcompat: provides glibc compatibility for Alpine
-RUN apk add --no-cache \
+# git: for cloning/git operations
+# python3/pip: common requirement for AI agents/tools
+# curl: for healthchecks/downloads
+# build-essential: for compiling native node modules
+RUN apt-get update && apt-get install -y \
     git \
     python3 \
-    py3-pip \
+    python3-pip \
     curl \
-    build-base \
-    gcompat \
-    && ln -sf /usr/bin/python3 /usr/bin/python
+    build-essential \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -s /usr/bin/python3 /usr/bin/python
 
 # Install OpenCode CLI and CodeNomad globally
 # --unsafe-perm=true is required for post-install scripts
