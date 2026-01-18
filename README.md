@@ -12,7 +12,13 @@ A Dockerized environment for running [CodeNomad](https://github.com/NeuralNomads
 
 ## Quick Start
 
-1.  **Start the services**
+1.  **Configure environment**
+    ```bash
+    cp .env.example .env
+    ```
+    Edit `.env` to set your `CODENOMAD_SERVER_PASSWORD`.
+
+2.  **Start the services**
     ```bash
     docker-compose up -d
     ```

@@ -18,6 +18,7 @@ services:
     environment:
       - HOST=0.0.0.0
       - CLI_PORT=9898
+      - CODENOMAD_SERVER_PASSWORD=${CODENOMAD_SERVER_PASSWORD:-codenomad}
     tty: true
     stdin_open: true
 
