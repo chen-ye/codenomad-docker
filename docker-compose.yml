@@ -24,6 +24,7 @@ services:
       - HOST=0.0.0.0
       - CLI_PORT=9898
       - CODENOMAD_SERVER_PASSWORD=${CODENOMAD_SERVER_PASSWORD:-codenomad}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
     tty: true
     stdin_open: true
 
@@ -40,6 +41,8 @@ services:
       # To use a bind mount instead:
       # - ./workspace:/workspace
     working_dir: /
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
 
   opencode-manager:
     image: ghcr.io/chen-ye/opencode-manager:latest
@@ -56,6 +59,7 @@ services:
       - HOST=0.0.0.0
       - PORT=5003
       - WORKSPACE_PATH=/workspace
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
     volumes:
       - opencode-workspace:/workspace
       # To use a bind mount instead:
