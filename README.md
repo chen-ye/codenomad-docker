@@ -1,6 +1,6 @@
-# OpenCoder Multi-Client Docker
+# OpenCoder Multi-Client
 
-A Dockerized environment for running [CodeNomad](https://github.com/NeuralNomadsAI/CodeNomad) alongside the official [OpenCode](https://opencode.ai) Web UI.
+A Dockerized environment for running [CodeNomad](https://github.com/NeuralNomadsAI/CodeNomad) and [OpenCode Manager](https://github.com/chriswritescode-dev/opencode-manager) alongside the official [OpenCode](https://opencode.ai) Web UI.
 
 ## Services
 
