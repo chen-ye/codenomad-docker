@@ -28,7 +28,7 @@ services:
   opencode-web:
     image: ghcr.io/anomalyco/opencode:latest
     pull_policy: always
-    command: ["web", "--hostname", "0.0.0.0", "--port", "3000", "--mdns"]
+    command: ["web", "--hostname", "0.0.0.0", "--port", "3000", "--mdns", "--unrestricted-root"]
     ports:
       - "3000:3000"
     volumes:
